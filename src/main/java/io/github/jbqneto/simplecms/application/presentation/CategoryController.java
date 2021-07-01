@@ -31,4 +31,16 @@ public class CategoryController {
         return CategoryMapper.toRepresentation(savedCategory);
     }
 
+    @GetMapping("/{id}")
+    public CategoryRepresentation getById(@PathVariable long id) {
+        Category category = service.findById(id);
+
+        return CategoryMapper.toRepresentation(category);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable long id) {
+        this.service.delete(id);
+    }
+
 }
